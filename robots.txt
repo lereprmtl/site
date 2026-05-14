@@ -1,0 +1,153 @@
+# Le Repaire du Collectionneur — Site temporaire
+
+Site « coming soon » bilingue (FR/EN) pour [lereprmtl.com](https://lereprmtl.com).
+
+Boutique spécialisée en cartes sportives, JCC, mémorabilias et art local.
+**Ouverture : août 2026** — 319 rue de la Montagne, Griffintown, Montréal.
+
+---
+
+## 📐 Architecture
+
+```
+site/
+├── index.html          # Page unique bilingue avec toggle FR/EN
+├── favicon.ico         # Favicon principal
+├── CNAME               # Custom domain GitHub Pages
+├── robots.txt          # SEO + AI crawlers
+├── sitemap.xml         # Sitemap (1 page)
+├── site.webmanifest    # PWA manifest
+└── assets/
+    ├── og-image.jpg          # Open Graph 1200x630
+    ├── og-image.png          # Version PNG haute qualité
+    ├── theo-mascot.png       # Mascotte Theo (fond Onyx)
+    ├── theo-mascot-transparent.png  # Mascotte fond transparent
+    ├── favicon-16x16.png
+    ├── favicon-32x32.png
+    ├── favicon.ico
+    ├── apple-touch-icon.png  # 180x180 iOS
+    └── icon-512.png          # 512x512 Android/PWA
+```
+
+---
+
+## 🚀 Déploiement
+
+### Via GitHub Pages
+
+1. **Repo** : `lereprmtl/site` (public)
+2. **Branch** : `main`
+3. **Settings → Pages** :
+   - Source : `Deploy from a branch`
+   - Branch : `main` / root
+4. **Custom domain** : `lereprmtl.com` (auto-détecté via le fichier `CNAME`)
+5. **Enforce HTTPS** : ✅
+
+### DNS (Cloudflare)
+
+Configurer chez Cloudflare pour `lereprmtl.com` :
+
+```
+A     @     185.199.108.153   DNS only
+A     @     185.199.109.153   DNS only
+A     @     185.199.110.153   DNS only
+A     @     185.199.111.153   DNS only
+CNAME www   lereprmtl.github.io   Proxied
+```
+
+GitHub Pages utilise ces 4 IPs publiques pour le custom apex domain.
+
+⚠️ **Important** : Records A en `DNS only` (gris, non proxifié), sinon GitHub Pages ne peut pas émettre le certificat SSL Let's Encrypt automatique.
+
+---
+
+## 📝 Configuration Formspree (optionnel)
+
+Le formulaire de liste d'attente fonctionne en deux modes :
+
+1. **Mode par défaut** : si `FORMSPREE_ENDPOINT` n'est pas remplacé, le formulaire ouvre simplement le client courriel du visiteur avec `mailto:info@lerepr.com`.
+
+2. **Mode actif Formspree** : pour collecter les inscriptions sans courriel utilisateur :
+   - Créer un compte sur [formspree.io](https://formspree.io) (gratuit, 50 envois/mois)
+   - Créer un nouveau form
+   - Copier l'endpoint (ex: `https://formspree.io/f/abcdwxyz`)
+   - Remplacer `FORMSPREE_ENDPOINT` dans `index.html` (deux occurrences : `action` et `const PLACEHOLDER`)
+   - Commit + push
+
+---
+
+## 🎨 Branding
+
+| Élément | Valeur |
+|---|---|
+| **Onyx** (background) | `#1C1C1C` |
+| **Onyx deep** | `#0F0F0F` |
+| **Champagne (or)** | `#C9A96E` |
+| **Gold bright** | `#DDC189` |
+| **Cream (texte)** | `#F5EDD5` |
+
+### Polices
+
+- **Display** : Big Shoulders Display (700/900)
+- **Serif** : Cormorant Garamond (italique pour atmosphère)
+- **Sans** : Manrope (300/400/500)
+- **Mono** : JetBrains Mono (350/400)
+
+---
+
+## 🔧 Développement local
+
+```bash
+# Cloner le repo
+git clone https://github.com/lereprmtl/site.git
+cd site
+
+# Servir localement (Python 3)
+python3 -m http.server 8000
+
+# Ouvrir http://localhost:8000
+```
+
+---
+
+## 📊 SEO Checklist
+
+- ✅ Open Graph image (1200×630)
+- ✅ Twitter Card
+- ✅ Schema.org LocalBusiness (JSON-LD)
+- ✅ Canonical URL
+- ✅ Robots meta + robots.txt
+- ✅ Sitemap.xml
+- ✅ Hreflang (fr-CA / en-CA)
+- ✅ Geo meta (Montréal)
+- ✅ Web manifest (PWA)
+- ✅ Favicons multi-tailles
+- ✅ HTML lang="fr-CA"
+- ✅ Meta description
+- ✅ Theme color (Onyx)
+
+---
+
+## 🔗 Liens
+
+- **Site live** : https://lereprmtl.com
+- **Email contact** : info@lerepr.com
+- **Instagram/TikTok/Facebook** : @lereprmtl
+- **Domaine technique** : lerepr.com (Microsoft 365 + outils internes)
+- **Adresse physique** : 319 rue de la Montagne, Griffintown, Montréal H3C 0H2
+
+---
+
+## 📅 Roadmap
+
+- ✅ **Mai 2026** : Site temporaire en ligne
+- 🟡 **Juin 2026** : Activation Formspree, photos chantier
+- 🟡 **Juillet 2026** : Préparation lancement, événements pré-ouverture
+- 🟢 **1er août 2026** : Ouverture officielle — remplacement par site e-commerce
+
+---
+
+## 📄 License
+
+© 2026 Le Repaire du Collectionneur Inc. — Tous droits réservés.
+NEQ 1182011628
